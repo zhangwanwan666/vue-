@@ -4,7 +4,7 @@
         <span class="toProfile" @click="toProfile">
             <i class="el-icon-arrow-left" ></i>
         </span>
-        <h3>我的收货地址</h3>
+        <h3>我的小宝藏</h3>
       </header>
       <main>
         <ul class="all-address"  v-if="allAddress.length > 0">

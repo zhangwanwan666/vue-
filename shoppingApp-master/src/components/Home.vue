@@ -22,11 +22,12 @@
     </div>
 
     <el-dialog
+    class="el-alert"
       title="提示"
       :visible.sync="dialogVisible"
-      width="30%">
+      width='60%'>
       <p>张大碗博客园-我是一只小菜鸟</p>
-      <img src="../../static/zhangdawan.png" height="280" width="280">
+      <img src="../../static/zhangdawan.png">
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
@@ -46,10 +47,10 @@ export default {
     var ipad = !!(UA.match(/(iPad).*OS\s([\d_]+)/)),
         isIphone = !!(!ipad && UA.match(/(iPhone\sOS)\s([\d_]+)/)),
         isAndroid = !!(UA.match(/(Android)\s+([\d.]+)/)),
-        isPC = !(isIphone || isAndroid || ipad);
+        isPC = (isIphone || isAndroid || ipad);
     return {
       goods:[],
-      dialogVisible: isPC
+      dialogVisible: true
     }
   },
   computed: {
@@ -99,24 +100,42 @@ export default {
   width: 100%;
   padding-bottom: $NavHeight + 5px;
   padding-top: $HomeHeaderHeight;
+
+  .home-main{
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .goods{
+    width: 100%;
+    list-style: none;
+    padding: 0;
+  }
+  .goods>li{
+    width: 100%;
+  }
+  .no-more-goods{
+    height: 40px;
+    line-height: 40px;
+  }
+  .slideInRight{
+    animation-duration: 0.25s;
+  }
+  .el-alert{
+    margin: 0 auto;
+
+    p{
+      font-size: 1.4rem;
+      color: rosybrown;
+    }
+    img{
+      width: 100%;
+    }
+
+   
+  }
+
+
+
 }
-.home-main{
-  width: 100%;
-  overflow-x: hidden;
-}
-.goods{
-  width: 100%;
-  list-style: none;
-  padding: 0;
-}
-.goods>li{
-  width: 100%;
-}
-.no-more-goods{
-  height: 40px;
-  line-height: 40px;
-}
-.slideInRight{
-  animation-duration: 0.25s;
-}
+
 </style>
