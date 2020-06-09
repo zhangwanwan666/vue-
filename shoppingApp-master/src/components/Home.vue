@@ -4,7 +4,7 @@
     <div class="home-main">
       <transition-group enter-active-class="slideInRight">
         <ul class="goods animated" :key="animatedCurrentKey">
-          <li v-for="item in goods" class="one-com" v-show="isCurrent(item.kind)">
+          <li v-for="(item, index) in goods" class="one-com" v-show="isCurrent(item.kind)" v-bind:key="index">
             <one-commodity
               :itemId="item.id"
               :imgUrl="item.img"
@@ -25,8 +25,8 @@
       title="提示"
       :visible.sync="dialogVisible"
       width="30%">
-      <p>这是手机端应用，用手机微信，或浏览器扫码打开，或chrome浏览器手机调试模式下打开效果更佳哦。</p>
-      <img src="../../static/url.png" height="280" width="280">
+      <p>张大碗博客园-我是一只小菜鸟</p>
+      <img src="../../static/zhangdawan.png" height="280" width="280">
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible = false">确 定</el-button>

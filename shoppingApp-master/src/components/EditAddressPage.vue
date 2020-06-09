@@ -8,7 +8,7 @@
       </header>
       <main>
         <ul class="all-address"  v-if="allAddress.length > 0">
-          <li class="address" v-for="(item, index) in allAddress">
+          <li class="address" v-for="(item, index) in allAddress" v-bind:key='index'>
             <p>{{ item.name }}</p>
             <p>{{ item.phone }}</p>
             <p>{{ item.city + item.detailAdd }}</p>

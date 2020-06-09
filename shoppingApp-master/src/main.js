@@ -18,6 +18,7 @@ Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
 
+document.documentElement.style.fontSize=document.documentElement.clientWidth / 37.5 +'px'
 
 router.afterEach(() => {
     window.scrollTo(0,0);
