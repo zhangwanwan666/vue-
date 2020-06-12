@@ -14,7 +14,7 @@ import './ui/my-own-ui.js'
 import './assets/css/base.css'
 import './assets/css/vue2-animate.css'
 
-Vue.use(VueAxios, axios);
+Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
 
