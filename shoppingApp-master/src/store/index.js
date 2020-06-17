@@ -3,8 +3,13 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
+import getters from './getters'
+import mutations from './mutations'
+import * as actions from './actions'
+
+
+
+const state ={
     username: '', // 用户
     isLogin: false,
     address:[
@@ -24,69 +29,14 @@ export default new Vuex.Store({
     cardid:0,
     cartGoods: [], // 添加到购物车中的商品
     cartCounter: 0, // 购物车物品总数
-    GoodsCurrentSelKind: 0 // 表示显示全部分类商品
-  },
-  mutations: {
-    addGoodsToCart (state, item) {
-      item.isInCart = true;
-      item.count++;
-      state.cartGoods.push(item);
-      state.cartCounter++;
-    },
-    adds(state,item){
-      
-      state.cardid++
-    },
-    deletes(){
-      state.cardid--
-    },
-    deleteGoodsFromCart(state, itemId) {
-      state.cartCounter--;
-      state.cartGoods.some((val, index, Goods) => {
-        if (val.id === itemId) {
-          val.isInCart = false;
-          val.count--;
-          Goods.splice(index, 1);
-          return true;
-        }
-      })
-    },
-    addGoods(state, itemId){
-      state.cartCounter++;
-      state.cartGoods.some(val => {
-        if (val.id === itemId) {
-          val.count++
-          return true;
-        }
-      })
-    },
-    reduceGoods(state, itemId){
-      state.cartCounter--;
-      state.cartGoods.some(val => {
-        if (val.id === itemId) {
-          val.count--;
-          return true;
-        }
-      })
-    },
-    changeCurrentSelKind(state, kind){
-      state.GoodsCurrentSelKind = kind;
-    },
-    login(state, username){
-      state.username = username;
-      state.isLogin = true;
-    },
-    logout(state){
-      state.isLogin = false;
-    },
-    addNewAddress(state, newAdd){
-      state.address.push(newAdd);
-    },
-    modifyAddress(state, item){
-      state.address[item.index] = item.value;
-    },
-    deleteAddress(state, index){
-      state.address.splice(index, 1);
-    }
-  }
+    GoodsCurrentSelKind: 0, // 表示显示全部分类商品
+    dialogVisible:false, //控制首页弹窗false隐藏
+    muces:'actions'
+ 
+}
+export const store = new Vuex.Store({
+state,
+getters,
+mutations,
+actions
 })

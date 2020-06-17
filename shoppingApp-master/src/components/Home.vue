@@ -26,11 +26,11 @@
       title="提示"
       :visible.sync="dialogVisible"
       width='60%'>
-      <p>张大碗博客园-我是一只小菜鸟</p>
+      <p>{{titles}}-我是一只小菜鸟</p>
       <img src="../../static/zhangdawan.png">
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        <el-button type="primary" @click="dialogVisibles()">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -50,7 +50,8 @@ export default {
         isPC = (isIphone || isAndroid || ipad);
     return {
       goods:[],
-      dialogVisible: true
+      dialogVisible:true,
+      titles:''
     }
   },
   computed: {
@@ -69,6 +70,11 @@ export default {
         return itemKind === currentKind;
       }
     },
+    dialogVisibles(){
+      this.$store.dispatch('muce','actions炮筒')
+      this.dialogVisible=this.$store.state.dialogVisible
+      console.log(this.$store.state.muces)
+    }
   },
   components: {
     OneCommodity: OneCommodity,
@@ -89,7 +95,11 @@ export default {
         this.goods = [...res.data];
       })
     })
-  }
+  
+      this.titles=this.$store.state.muces
+        console.log(this.titles,this.$store.state.muces,"s")
+  },
+
 }
 </script>
 

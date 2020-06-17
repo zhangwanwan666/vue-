@@ -55,6 +55,14 @@ export default {
   },
   methods: {
     addGoodsToCart () {
+      const { isLogin } = this.$store.state;
+      if(!isLogin){
+        this.$router.push({
+          path: '/Login',
+          query: 'Home'
+        })
+        return
+      }
       this.$store.commit('addGoodsToCart', this.oneCommodity);
     },
     getOperator (op) {
@@ -129,9 +137,9 @@ export default {
     top: 50%;
     transform: translateY(-50%);
   }
-  .title{
+  // .title{
 
-  }
+  // }
   .price {
 
     .price-number{
