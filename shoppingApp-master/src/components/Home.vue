@@ -84,13 +84,13 @@ export default {
   //gitHub：/shoppingApp/static/data/github-goods.json
   //阿里云：
   mounted () {
-    this.axios.get('http://127.0.0.1:7777/static/data/goods.json')
+    this.axios.get(`${window.location.host}/static/data/goods.json`)
     .then(res => {
       console.log(res,"res")
       this.goods = [...res.data];
     })
     .catch(() =>{
-      this.axios.get('http://127.0.0.1:7778/static/data/goods.json')
+      this.axios.get(`${window.location.host}/static/data/goods.json`)
       .then(res => {
         this.goods = [...res.data];
       })
