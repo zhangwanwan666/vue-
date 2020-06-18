@@ -16,6 +16,14 @@
           </li>
         </ul>
       </main>
+       <main>
+        <ul class="all-address"  v-if="listAdrass.length > 0">
+          <li class="address" v-for="(item, index) in listAdrass" v-bind:key="index">
+          <span>{{item[0]}}:</span>
+          <span>{{item[1]}}</span>
+          </li>
+        </ul>
+      </main>
       <footer>
         <el-button type="danger" @click="toAdressInputForm">
           新增收货地址
@@ -28,13 +36,33 @@
 export default {
   data() {
     return {
-
+      listAdrass:[]
     }
   },
   computed: {
     allAddress () {
+      // console.log(this.$store.state.address,"this.$store.state.address")
       return this.$store.state.address;
     }
+  },
+  created(){
+    let address=this.$store.state.address
+    let as=[]
+    address.map((item,index)=>{
+      as.push(
+        ['姓名',item.name],
+        ['电话',item.phone],
+        ['所在城市',item.city],
+        ['详细地址',item.detailAdd],
+      )
+    })
+    this.listAdrass=as
+  console.log(as,"add")
+
+  as.map((item,i)=>{
+    console.log(item[0],item[1])
+  })
+
   },
   methods: {
     toProfile () {
@@ -70,7 +98,6 @@ export default {
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 1001;
   background-color: #f5f5f5;
   header{
     position: relative;
@@ -106,14 +133,14 @@ export default {
     }
   }
   footer{
-    position: fixed;
-    width: 100%;
-    bottom: 0.1rem;
-    left: 0;
-    .el-button--danger{
-      width: 90%;
-      background-color: $mainRed;
-    }
+    // position: fixed;
+    // width: 100%;
+    // bottom: 0.1rem;
+    // left: 0;
+    // .el-button--danger{
+    //   width: 90%;
+    //   background-color: $mainRed;
+    // }
   }
 }
 </style>
