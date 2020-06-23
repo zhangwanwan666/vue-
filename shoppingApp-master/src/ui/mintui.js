@@ -3,9 +3,10 @@ import {
   Button,
   Tabbar,
   TabItem,
-  Lazyload
+  Lazyload,
+  Checklist
 } from 'mint-ui'
-
+import 'mint-ui/lib/style.css'
 
 Vue.use(Lazyload, {
   preLoad: 1.3,
@@ -16,3 +17,4 @@ Vue.use(Lazyload, {
 Vue.component(Tabbar.name, Tabbar)
 Vue.component(TabItem.name, TabItem)
 Vue.component(Button.name, Button)
+Vue.component(Checklist.name, Checklist);
